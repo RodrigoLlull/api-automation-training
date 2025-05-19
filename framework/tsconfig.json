@@ -5,6 +5,7 @@
     "lib": ["es2021"],
     "module": "es2022",
     "target": "es2021",
+    "types": ["mocha"],
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
