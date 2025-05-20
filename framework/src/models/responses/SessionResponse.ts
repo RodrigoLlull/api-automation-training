@@ -1,3 +1,4 @@
 export interface SessionResponse {
-  token: string;
+  accessToken: string;
+  refreshToken: string;
 }
