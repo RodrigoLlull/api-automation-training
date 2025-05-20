@@ -1,5 +1,5 @@
 import { ServiceBase } from "../../base/ServiceBase";
-import { Cat } from "../responses/CatResponse";
+import { Cat } from "../Cat";
 import { Response } from "../responses/Response";
 
 export class CatService extends ServiceBase {
@@ -19,15 +19,15 @@ export class CatService extends ServiceBase {
     return await this.get<Cat>(`${this.url}/${catId}`);
   }
 
-  async deleteCat(catId: number): Promise<Response<Cat>> {
+  async deleteCat(catId: number): Promise<Response<null>> {
     return await this.delete(`${this.url}/${catId}`);
   }
 
-  async patchCat(catId: number, data: Partial<Cat>): Promise<Response<Cat>> {
+  async patchCat(catId: number, data: Partial<Cat>) {
     return await this.patch<Cat>(`${this.url}/${catId}`, data);
   }
 
-  async updateCat(catId: number, cat: Cat): Promise<Response<Cat>> {
+  async updateCat(catId: number, cat: Cat) {
     return await this.put<Cat>(`${this.url}/${catId}`, cat);
   }
 }
