@@ -7,26 +7,26 @@ export class CatService extends ServiceBase {
   }
 
   async getAllCats() {
-    return this.get<Cat[]>(this.url);
+    return await this.get<Cat[]>(this.url);
   }
 
   async createCat(cat: Cat) {
-    return this.post<Cat>(this.url, cat);
+    return await this.post<Cat>(this.url, cat);
   }
 
   async getCatById(catId: number) {
-    return this.get<Cat>(`${this.url}/${catId}`);
+    return await this.get<Cat>(`${this.url}/${catId}`);
   }
 
   async deleteCat(catId: number) {
-    return this.delete(`${this.url}/${catId}`);
+    return await this.delete(`${this.url}/${catId}`);
   }
 
   async patchCat(catId: number, data: Partial<Cat>) {
-    return this.patch<Cat>(`${this.url}/${catId}`, data);
+    return await this.patch<Cat>(`${this.url}/${catId}`, data);
   }
 
   async updateCat(catId: number, cat: Cat) {
-    return this.put<Cat>(`${this.url}/${catId}`, cat);
+    return await this.put<Cat>(`${this.url}/${catId}`, cat);
   }
 }
