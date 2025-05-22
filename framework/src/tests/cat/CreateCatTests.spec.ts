@@ -22,6 +22,9 @@ describe("@API POST cats", () => {
     const response = await catService.createCat(newCat);
     const createdCatId = response.data.id;
 
+    console.log("Response body:", JSON.stringify(response.data, null, 2));
+    console.log("Status code:", response.status);
+
     console.log(createdCatId);
     console.log(response);
 
