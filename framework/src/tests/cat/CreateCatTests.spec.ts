@@ -15,7 +15,7 @@ describe("@API POST cats", () => {
       vaccinated: true,
       temperament: ["Playful", "Curious"],
       staffInCharge: "00000000-0000-0000-0000-000000000000",
-      isAdopted: false,
+      isAdopted: true,
       adopterId: 1
     };
 
