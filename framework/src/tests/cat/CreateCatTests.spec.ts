@@ -27,6 +27,10 @@ describe("@API POST cats", () => {
     console.log(adopterResponse.data);
     console.log(createdAdopterId);
 
+    if (!createdAdopterId) {
+      throw new Error("Expected created adopter to have an id");
+    }
+
     const newCat: Cat = {
       name: "Sol",
       age: 1,
@@ -36,7 +40,7 @@ describe("@API POST cats", () => {
       temperament: ["Playful", "Curious"],
       staffInCharge: "00000000-0000-0000-0000-000000000000",
       isAdopted: true,
-      adopterId: 1,
+      adopterId: createdAdopterId,
     };
 
     const response = await catService.createCat(newCat);
@@ -44,10 +48,6 @@ describe("@API POST cats", () => {
 
     console.log(response.data);
     console.log(createdCatId);
-
-    if (!createdAdopterId) {
-      throw new Error("Expected created adopter to have an id");
-    }
 
     if (!createdCatId) {
       throw new Error("Expected created cat to have an id");
