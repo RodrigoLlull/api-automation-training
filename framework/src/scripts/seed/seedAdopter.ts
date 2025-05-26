@@ -10,7 +10,7 @@ async function seedAdopter() {
         name: "Rodrigo",
         lastName: "Llull",
         dateOfBirth: "1998-10-29T00:00:00.000Z",
-        phone: 59895000000,
+        phone: "59895000000",
         address: "My Address 1234",
       },
       {
