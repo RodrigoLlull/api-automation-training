@@ -38,10 +38,6 @@ jobs:
           npm install
           npm run lint
 
-      - name: Run seed script
-        working-directory: ./framework
-        run: npx tsx src/scripts/seed/seedAdopter.ts
-
       - name: Run tests
         working-directory: ./framework
         run: npm run test

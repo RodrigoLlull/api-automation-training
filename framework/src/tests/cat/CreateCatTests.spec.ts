@@ -1,12 +1,31 @@
 import { expect } from "chai";
 import { CatService } from "../../models/service/CatService";
 import { Cat } from "../../models/Cat";
+import { AdopterService } from "../../models/service/AdopterService";
+import { Adopter } from "../../models/Adopter";
 
 describe("@API POST cats", () => {
   let catService: CatService;
+  let adopterService: AdopterService;
 
   it("@Smoke - User should be able to create a cat and get status code 201", async () => {
+    adopterService = new AdopterService();
     catService = new CatService();
+
+    const newAdopter: Adopter = {
+      name: "Rodrigo",
+      lastName: "Llull",
+      dateOfBirth: "1998-10-29T16:09:34.187Z",
+      phone: "59895000000",
+      address: "My Address 1234",
+    };
+
+    const adopterResponse = await adopterService.createAdopter(newAdopter);
+    const createdAdopterId = adopterResponse.data.id;
+
+    console.log(adopterResponse.data);
+    console.log(createdAdopterId);
+
     const newCat: Cat = {
       name: "Sol",
       age: 1,
@@ -25,6 +44,10 @@ describe("@API POST cats", () => {
     console.log(response.data);
     console.log(createdCatId);
 
+    if (!createdAdopterId) {
+      throw new Error("Expected created adopter to have an id");
+    }
+
     if (!createdCatId) {
       throw new Error("Expected created cat to have an id");
     }
@@ -41,6 +64,7 @@ describe("@API POST cats", () => {
     expect(response.data.isAdopted).to.equal(newCat.isAdopted);
 
     await catService.deleteCat(createdCatId);
+    await adopterService.deleteAdopter(createdAdopterId);
   });
 
   it("@Regression - Should fail with 400 when required fields are missing", async () => {
