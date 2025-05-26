@@ -13,6 +13,7 @@ describe("@API POST cats", () => {
     catService = new CatService();
 
     const newAdopter: Adopter = {
+      id: 1,
       name: "Rodrigo",
       lastName: "Llull",
       dateOfBirth: "1998-10-29T16:09:34.187Z",
@@ -23,7 +24,6 @@ describe("@API POST cats", () => {
     const adopterResponse = await adopterService.createAdopter(newAdopter);
     const createdAdopterId = adopterResponse.data.id;
 
-    console.log(adopterResponse);
     console.log(adopterResponse.data);
     console.log(createdAdopterId);
 
