@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const BASE_URL = process.env["BASEURL"] ?? "";
+const BASE_URL = process.env["BASEURL"] ?? "http://localhost:3000/api";
 
 async function seedAdopter() {
   try {
-    const response = await axios.post(
-      "http://localhost:3000/api/adopters",
+    await axios.post(
+      `${BASE_URL}/adopters`,
       {
         name: "Rodrigo",
         lastName: "Llull",
@@ -14,12 +14,18 @@ async function seedAdopter() {
         address: "My Address 1234",
       },
       {
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
       },
     );
-    console.log("Adopter seeded:", response.data);
   } catch (error: any) {
-    console.error("Seed error:", error.response?.data || error.message || error);
+    if (error.response) {
+      console.error("Seed error status:", error.response.status);
+      console.error("Seed error data:", error.response.data);
+    } else {
+      console.error("Seed error:", error.message);
+    }
     process.exit(1);
   }
 }
