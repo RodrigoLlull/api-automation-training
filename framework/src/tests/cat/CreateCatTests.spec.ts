@@ -16,7 +16,7 @@ describe("@API POST cats", () => {
       temperament: ["Playful", "Curious"],
       staffInCharge: "00000000-0000-0000-0000-000000000000",
       isAdopted: true,
-      adopterId: 1,
+      adopterId: 0,
     };
 
     const response = await catService.createCat(newCat);
