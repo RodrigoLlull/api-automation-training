@@ -28,7 +28,8 @@ jobs:
       - name: Start API
         working-directory: ./CatCafeAPI
         run: |
-          npm install
+          npm install &
+          sleep 10
           npm run dev & 
           sleep 10
 
