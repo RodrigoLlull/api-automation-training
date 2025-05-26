@@ -4,8 +4,8 @@ const BASE_URL = process.env["BASEURL"] ?? "";
 
 async function seedAdopter() {
   try {
-    await axios.post(
-      "http://localhost:3000/api/adopters",
+    const response = await axios.post(
+      `${BASE_URL}/adopters`,
       {
         name: "Rodrigo",
         lastName: "Llull",
@@ -14,12 +14,14 @@ async function seedAdopter() {
         address: "My Address 1234",
       },
       {
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
       },
     );
-  } catch (error: any) {}
+    console.log("Adopter seeded:", response.data);
+  } catch (error: any) {
+    console.error("Seed error:", error.response?.data || error.message || error);
+    process.exit(1);
+  }
 }
 
 seedAdopter();
