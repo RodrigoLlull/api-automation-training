@@ -22,6 +22,9 @@ describe("@API POST cats", () => {
     const response = await catService.createCat(newCat);
     const createdCatId = response.data.id;
 
+    console.log(response.data);
+    console.log(createdCatId);
+
     if (!createdCatId) {
       throw new Error("Expected created cat to have an id");
     }
