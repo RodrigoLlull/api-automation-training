@@ -25,16 +25,13 @@ jobs:
         with:
           node-version: "20.x"
 
-      - name: Start API and wait until ready
+      - name: Start API
         working-directory: ./CatCafeAPI
         run: |
-          npm install
-          npm run dev &
-
-          until curl --silent --head --fail http://localhost:3000/api; do
-            echo -n "."
-            sleep 2
-          done
+          npm install &
+          sleep 10
+          npm run dev & 
+          sleep 10
 
       - name: Install dependencies and lint (Framework)
         working-directory: ./framework
