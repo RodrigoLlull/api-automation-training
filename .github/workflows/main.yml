@@ -40,7 +40,7 @@ jobs:
 
       - name: Run seed script
         working-directory: ./framework
-        run: npx tsx src/scripts/seed.ts
+        run: npx tsx src/scripts/seed/seedAdopter.ts
 
       - name: Run tests
         working-directory: ./framework
