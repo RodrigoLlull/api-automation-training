@@ -13,7 +13,6 @@ describe("@API POST cats", () => {
     catService = new CatService();
 
     const newAdopter: Adopter = {
-      id: 1,
       name: "Rodrigo",
       lastName: "Llull",
       dateOfBirth: "1998-10-29T16:09:34.187Z",
