@@ -5,7 +5,7 @@ const BASE_URL = process.env["BASEURL"] ?? "";
 async function seedAdopter() {
   try {
     const response = await axios.post(
-      `${BASE_URL}/adopters`,
+      "http://localhost:3000/api/adopters",
       {
         name: "Rodrigo",
         lastName: "Llull",
